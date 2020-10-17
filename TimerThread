@@ -1,0 +1,28 @@
+package Temp_Hum;
+
+import java.util.Date;
+import java.util.Timer;
+
+public class TimerThread {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+ 
+        while (true) {
+            GetJsonData jsonData = new GetJsonData();
+            Timer timer = new Timer();
+ 
+            Date today = new Date();
+            @SuppressWarnings("deprecation")
+			Date current = new Date(today.getYear(), today.getMonth(), today.getDate(), 20, 17, 0); // 시, 분, 초 순서로 
+            																			// 작동 시간을 직접 세팅                     
+            timer.schedule(jsonData, current);
+            
+            // while을 일정한 시간만큰 돌려야 함으로
+            try {
+                Thread.sleep(1000 * 10);  // 60초 X 60분 X 6시간마다 작동 
+            } catch (Exception e) {
+ 
+            }
+        }
+   }
+}
